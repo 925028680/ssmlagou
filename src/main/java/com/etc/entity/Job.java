@@ -8,8 +8,8 @@ public class Job {
 	private String jobDetail;
 	private String salary;
 	private String pubDate;
-	private ThreeType threeType;// ¹¤×÷Ö°Î»ËùÊôµÄÈı¼¶·ÖÀà
-	private Company company;// ¹¤×÷Ö°Î»ËùÊôµÄ¹«Ë¾
+	private ThreeType threeType;// èŒä½çš„ä¸‰çº§åˆ†ç±»
+	private Company company;// èŒä½æ‰€å±çš„å…¬å¸
 
 	public Job() {
 	}
