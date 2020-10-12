@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.JobDao">
+	<select id="query" parameterType="Job" resultMap="jobMap">
+		select * from job a,job_three_type b,company c where 
+		a.threetype_id=b.threetype_id and a.company_id=c.company_id
+		<if test="jobName != null and jobName != ''">
+			and job_name like concat('%',#{jobName},'%')
+		</if>
+	</select>
+	<resultMap type="Job" id="jobMap" autoMapping="true">
+		<id property="jobId" column="job_id"/>
+		<result property="jobName" column="job_name"/>
+		<result property="jobAddress" column="job_address"/>
+		<result property="jobDetail" column="job_detail"/>
+		<result property="pubDate" column="pub_date"/>
+		<association property="threeType" javaType="ThreeType">
+			<id property="threetypeId" column="threetype_id"/>
+			<result property="threetypeName" column="threetype_name"/>
+		</association>
+		<association property="company" javaType="Company" resultMap="com.etc.dao.CompanyDao.companyMap">
+		</association>
+	</resultMap>
+</mapper>  

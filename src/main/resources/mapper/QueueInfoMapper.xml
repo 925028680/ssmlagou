@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.QueueInfoDao">
+	<insert id="add" parameterType="QueueInfo">
+		insert into queue_info values(#{queueNo},#{busiType},now(),0)
+	</insert>
+	<update id="modStatus" parameterType="String">
+		update queue_info set queue_status=1 where queue_no=#{queueNo}
+	</update>
+	<!--查询业务类型为busitype的，最后一张票号(按queue_no降序，最第一条记录)-->
+	<select id="findLastBusiType" parameterType="String" resultType="String">
+		select queue_no from queue_info where busi_type=#{busiType} order by queue_no desc limit 1
+	</select>
+	<!--查询业务类型为busitype的，未被叫号的第一张票号(按queue_no升序，第一条记录)-->
+	<select id="findFirstBusiType" parameterType="String" resultType="String">
+		select queue_no from queue_info where busi_type=#{busiType} and queue_status='0' order by queue_no limit 1
+	</select>
+	<!--查询业务类型为busitype的，未被叫号的票号集合(需要按queue_no升序)-->
+	<select id="findListUncallBusitype" parameterType="String" resultType="String">
+		select queue_no from queue_info where busi_type=#{busiType} and queue_status='0' order by queue_no
+	</select>
+</mapper>

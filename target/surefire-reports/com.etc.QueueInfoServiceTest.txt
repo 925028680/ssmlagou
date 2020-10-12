@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: com.etc.QueueInfoServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 5.465 s <<< FAILURE! - in com.etc.QueueInfoServiceTest
+getQueueTest(com.etc.QueueInfoServiceTest)  Time elapsed: 0.642 s  <<< ERROR!
+org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.getQueueTest(QueueInfoServiceTest.java:36)
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.getQueueTest(QueueInfoServiceTest.java:36)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.etc.QueueInfoServiceTest.getQueueTest(QueueInfoServiceTest.java:36)
+
+callQueueNoFromRedisTest(com.etc.QueueInfoServiceTest)  Time elapsed: 0.108 s  <<< ERROR!
+org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.callQueueNoFromRedisTest(QueueInfoServiceTest.java:29)
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.callQueueNoFromRedisTest(QueueInfoServiceTest.java:29)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.etc.QueueInfoServiceTest.callQueueNoFromRedisTest(QueueInfoServiceTest.java:29)
+
+callQueueNoFromDbTest(com.etc.QueueInfoServiceTest)  Time elapsed: 0.164 s  <<< ERROR!
+org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.callQueueNoFromDbTest(QueueInfoServiceTest.java:23)
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at com.etc.QueueInfoServiceTest.callQueueNoFromDbTest(QueueInfoServiceTest.java:23)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.etc.QueueInfoServiceTest.callQueueNoFromDbTest(QueueInfoServiceTest.java:23)
+
